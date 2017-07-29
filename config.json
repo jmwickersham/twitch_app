@@ -1,5 +1,6 @@
 {
   "twitch_baseUrl": "https://api.twitch.tv/kraken",
   "authPath": "/oauth2/authorize",
-  "tokenPath": "/oauth2/token"
+  "tokenPath": "/oauth2/token",
+  "twitch_redirectUri": "https://twitch.herokuapp.com"
 }

@@ -10,7 +10,7 @@ let channel = '';
 let twitch = new TwitchAPI({
   clientId: process.env.TWITCH_CLIENT_ID,
   clientSecret: process.env.TWITCH_CLIENT_SECRET,
-  redirectUri: 'http://localhost',
+  redirectUri: config.twitch_redirectUri,
   scopes: ['channel_read']
 });
 
