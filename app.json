@@ -1,0 +1,5 @@
+{
+  "name": "Twitch App",
+  "description": "App with ability to pull Twitch channel information from API",
+  "respository": "https://github.com/jmwickersham/twitch_app"
+}
