@@ -1,5 +1,6 @@
 let express = require('express');
 let app = express();
+let Twitch = require('./twitch.js');
 
 app.set('port', (process.env.PORT || 5000));
 
