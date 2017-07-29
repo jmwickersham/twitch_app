@@ -11,6 +11,7 @@
     "url": "git+https://github.com/jmwickersham/twitch_app.git"
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
     "ejs": "2.5.6",
     "express": "4.15.2",
     "request": "^2.81.0"

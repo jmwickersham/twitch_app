@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 var request = require("request");
 
 var baseUrl = 'https://api.twitch.tv/kraken';
