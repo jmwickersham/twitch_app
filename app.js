@@ -5,8 +5,6 @@ const app = express();
 const TwitchAPI = require('./twitch.js');
 const config = require('./config.json');
 
-let channel = '';
-
 let twitch = new TwitchAPI({
   clientId: process.env.TWITCH_CLIENT_ID,
   clientSecret: process.env.TWITCH_CLIENT_SECRET,
@@ -29,12 +27,34 @@ app.get('/', function(request, response) {
 app.get('/follower_count', function(request, response, next) {
   twitch.getAuthenticatedUserChannel(process.env.TWITCH_AUTH)
     .then(fulfilled => {
-      channel = JSON.parse(fulfilled);
+      let channel = JSON.parse(fulfilled);
       console.log('channel: ' + channel.followers);
-      let followers = channel.followers;
+      let follower_count = channel.followers;
 
       response.render('pages/follower_count', {
-        followers: followers
+        followers: follower_count
+      });
+    })
+    .catch(error => {
+      console.log('promise error: ' + error.message);
+    });
+});
+
+app.get('/recent_followers', function(request, response, next) {
+  twitch.getChannelFollows('42859398')
+    .then(fulfilled => {
+      let followers = JSON.parse(fulfilled);
+      console.log('followers: ' + followers);
+
+      let followerArray = [];
+      for (i = 0; i < followers.follows.length; i++) {
+        console.log(followers.follows[i].user.name);
+        followerArray.push(followers.follows[i].user.name);
+      }
+      console.log(followerArray.toString());
+
+      response.render('pages/recent_followers', {
+        followerlist: followerArray.toString()
       });
     })
     .catch(error => {
